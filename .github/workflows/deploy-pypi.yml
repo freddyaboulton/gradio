@@ -69,7 +69,7 @@ jobs:
       - name: Upload kitchen sink to spaces
         run: |
           python scripts/upload_demo_to_space.py kitchen_sink \
-          ${{ format('gradio-test-deploys/{0}_kitchen_sink, ${{ env.GRADIO_VERSION }}) }} \
+          ${{ format("gradio-test-deploys/{0}_kitchen_sink", ${{ env.GRADIO_VERSION }}) }} \
           ${{ secrets.SPACES_DEPLOY_TOKEN }} \
           --gradio-version  ${{ env.GRADIO_VERSION }} >> url.txt
           echo "SPACE_URL=$(cat url.txt)" >> $GITHUB_ENV

@@ -69,7 +69,7 @@ jobs:
       - name: Upload kitchen sink to spaces
         run: |
           python scripts/upload_demo_to_space.py kitchen_sink \
-          ${{ format('gradio-test-deploys/{0}_kitchen_sink', ${{ env.GRADIO_VERSION }}) }} \
+          gradio-test-deploys/${{ env.GRADIO_VERSION }}_kitchen_sink \
           ${{ secrets.SPACES_DEPLOY_TOKEN }} \
           --gradio-version  ${{ env.GRADIO_VERSION }} >> url.txt
           echo "SPACE_URL=$(cat url.txt)" >> $GITHUB_ENV
@@ -77,5 +77,5 @@ jobs:
         uses: thollander/actions-comment-pull-request@v1
         with:
           message: |
-            ${{ format( 'Deployed a demo with this version at {0}', ${{ env.SPACE_URL }}) }}
+            Deployed a demo with this version at ${{ env.SPACE_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

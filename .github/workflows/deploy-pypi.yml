@@ -63,7 +63,7 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
+          python-version: '3.9'
       - name: Install Hub Client Library
         run: pip install huggingface-hub==0.8.1
       - name: get release name

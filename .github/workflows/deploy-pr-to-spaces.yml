@@ -27,10 +27,10 @@ jobs:
     - run: unzip metadata.json.zip
     - name: Pipe metadata to env
       run: |
-        echo "wheel_name=python -c 'import json; print(json.load(open("metadata.json"))["wheel"])'" >> $GITHUB_ENV
-        echo "gh_sha=python -c 'import json; print(json.load(open("metadata.json"))["gh_sha"])'" >> $GITHUB_ENV
-        echo "gradio_version=python -c 'import json; print(json.load(open("metadata.json"))["version"])'" >> $GITHUB_ENV
-        echo "pr_number=python -c 'import json; print(json.load(open("metadata.json"))["pr_number"])'" >> $GITHUB_ENV
+        echo "wheel_name=$(python -c 'import json; print(json.load(open("metadata.json"))["wheel"])')" >> $GITHUB_ENV
+        echo "gh_sha=$(python -c 'import json; print(json.load(open("metadata.json"))["gh_sha"])')" >> $GITHUB_ENV
+        echo "gradio_version=$(python -c 'import json; print(json.load(open("metadata.json"))["version"])')" >> $GITHUB_ENV
+        echo "pr_number=$(python -c 'import json; print(json.load(open("metadata.json"))["pr_number"])')" >> $GITHUB_ENV
     - name: 'Download wheel'
       run: python scripts/download_artifacts.py ${{ github.event.workflow_run.id }} ${{ env.wheel_name }} ${{ secrets.COMMENT_TOKEN }} --owner freddyaboulton
     - run: echo $(ls)

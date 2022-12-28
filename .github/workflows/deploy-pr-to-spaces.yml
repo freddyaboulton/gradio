@@ -1,4 +1,4 @@
-name: Upload demo
+name: Deploy PR to Spaces
 
 on:
   workflow_run:

@@ -1299,7 +1299,6 @@ import datetime
 
 with gr.Blocks() as demo:
     gr.Textbox(datetime.datetime.now)
-
 demo.launch()
 ```
 
@@ -1451,7 +1450,6 @@ With [PR 1828](https://github.com/gradio-app/gradio/pull/1828) we now hide the s
 ## New Features:
 
 ### 1.  Blocks 🧱
-
 Blocks is a new, low-level API that allows you to have full control over the data flows and layout of your application. It allows you to build very complex, multi-step applications. For example, you might want to:
 
 * Group together related demos as multiple tabs in one web app

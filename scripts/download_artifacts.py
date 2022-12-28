@@ -3,7 +3,7 @@ import requests
 import os
 
 WORKFLOW_RUN_ENDPOINT = "https://api.github.com/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"
-ARTIFACT_DOWNLOAD_ENDPOINT = "https://api.github.com/repos/gradio-app/gradio/actions/artifacts/{artifact_id}/zip"
+ARTIFACT_DOWNLOAD_ENDPOINT = "https://api.github.com/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/zip"
 
 def download_artifact(
     owner: str, repo: str, run_id: str, artifact_name: str, gh_token: str):
@@ -25,7 +25,6 @@ def download_artifact(
         WORKFLOW_RUN_ENDPOINT.format(owner=owner, repo=repo, run_id=run_id),
         headers=headers
     ).json()
-
     artifact_id = next((artifact['id'] for artifact in artifacts['artifacts'] if artifact['name'] == artifact_name), None)
 
     if not artifact_id:

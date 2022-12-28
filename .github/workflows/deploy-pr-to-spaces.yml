@@ -13,6 +13,7 @@ jobs:
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     steps:
+    - uses: actions/checkout@v3
     - name: Install Python
       uses: actions/setup-python@v3
       with:

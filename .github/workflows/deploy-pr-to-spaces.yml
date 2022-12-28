@@ -47,7 +47,7 @@ jobs:
     - name: 'Download all_demos'
       run: python scripts/download_artifacts.py ${{ github.event.workflow_run.id }} all_demos  ${{ secrets.COMMENT_TOKEN }} --owner freddyaboulton
     - run: unzip all_demos.zip -d all_demos
-    - run: mv all_demos demo/
+    - run: cp -R all_demos/* demo/all_demos
     - name: Upload demo to spaces
       run: |
         python scripts/upload_demo_to_space.py all_demos \

@@ -31,7 +31,7 @@ def download_artifact(
         raise ValueError(f"Cannot find {artifact_name}! {artifacts} {owner} {repo} {run_id}")
 
     download = requests.get(
-        ARTIFACT_DOWNLOAD_ENDPOINT.format(artifact_id=artifact_id),
+        ARTIFACT_DOWNLOAD_ENDPOINT.format(artifact_id=artifact_id, owner=owner, repo=repo,),
         headers=headers
     )
     with open(f"{artifact_name}.zip", "wb") as f:

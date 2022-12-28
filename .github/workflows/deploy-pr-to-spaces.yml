@@ -61,3 +61,4 @@ jobs:
           All the demos for this PR have been deployed at ${{ env.SPACE_URL }}
         comment_includes: All the demos for this PR have been deployed at
         GITHUB_TOKEN: ${{ secrets.COMMENT_TOKEN }}
+        pr_number: ${{ env.pr_number }}

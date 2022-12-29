@@ -27,25 +27,6 @@ def make_plot(plot_type):
             y='y:O',
             color='z:Q'
         )
-    elif plot_type == "us_map":
-        states = alt.topo_feature(data.us_10m.url, 'states')
-        source = data.income.url
-
-        return alt.Chart(source).mark_geoshape().encode(
-            shape='geo:G',
-            color='pct:Q',
-            tooltip=['name:N', 'pct:Q'],
-            facet=alt.Facet('group:N', columns=2),
-        ).transform_lookup(
-            lookup='id',
-            from_=alt.LookupData(data=states, key='id'),
-            as_='geo'
-        ).properties(
-            width=300,
-            height=175,
-        ).project(
-            type='albersUsa'
-        )
     elif plot_type == "interactive_barplot":
         source = data.movies.url
 
@@ -129,7 +110,7 @@ def make_plot(plot_type):
 
 with gr.Blocks() as demo:
     button = gr.Radio(label="Plot type",
-                      choices=['scatter_plot', 'heatmap', 'us_map',
+                      choices=['scatter_plot', 'heatmap',
                                'interactive_barplot', "radial", "multiline"], value='scatter_plot')
     plot = gr.Plot(label="Plot")
     button.change(make_plot, inputs=button, outputs=[plot])
